@@ -7,8 +7,8 @@ for i in range(1000):
         print("Bye!")
         break
 #Entering numbers
-    a = int(input("Write first number: "))
-    c = int(input("Write second number: "))
+    a = float(input("Write first number: "))
+    c = float(input("Write second number: "))
 
 #Basic operations of the calculator.
     # Before division, it is checked that
@@ -38,7 +38,7 @@ for i in range(1000):
             continue
         print(a // c)
     else:
-        print("Error, wrong operand")
+        print("Error, wrong operator")
         continue
 
 
