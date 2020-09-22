@@ -40,5 +40,3 @@ for i in range(1000):
     else:
         print("Error, wrong operator")
         continue
-
-
