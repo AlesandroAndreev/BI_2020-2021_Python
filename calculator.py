@@ -16,28 +16,28 @@ for i in range(1000):
 
     if b == "+" :
         print(a + c)
-    elif b == "-":
+    elif b == "-" :
         print(a - c)
-    elif b == "*":
+    elif b == "*" :
         print(a * c)
-    elif b == "/":
-        if c == 0:
+    elif b == "/" :
+        if c == 0 :
             print("Zero!")
             continue
         print(a / c)
-    elif b == "**":
+    elif b == "**" :
         print(a ** c)
-    elif b == "%":
-        if c == 0:
+    elif b == "%" :
+        if c == 0 :
             print("Zero!")
             continue
         print(a % c)
-    elif b == "//":
-        if c == 0:
+    elif b == "//" :
+        if c == 0 :
             print("Zero!")
             continue
         print(a // c)
-    else:
+    else :
         print("Error, wrong operator")
         continue
 
