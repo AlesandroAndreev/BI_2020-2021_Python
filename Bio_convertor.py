@@ -1,4 +1,5 @@
 # Function for calculating how much to dilute a solution of known concentration.
+# normal
 def concetration(concentration_start,substance_volum,concentration_ultimate):
 
     if concentration_start > concentration_ultimate:
