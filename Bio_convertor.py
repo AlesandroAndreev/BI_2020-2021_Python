@@ -1,3 +1,4 @@
+# Function for calculating how much to dilute a solution of known concentration.
 def concetration(concentration_start,substance_volum,concentration_ultimate):
 
     if concentration_start > concentration_ultimate:
@@ -11,7 +12,7 @@ def concetration(concentration_start,substance_volum,concentration_ultimate):
 
     return water_volum
 
-
+# Volume converter. The input is a number and 2 dimensions - initial and final.
 def volume_converter(value,dimension_to_convert,finish_dimension):
 
     if dimension_to_convert == "ml":
@@ -39,7 +40,7 @@ def volume_converter(value,dimension_to_convert,finish_dimension):
             convertation = value*1000000
 
     return convertation
-
+# Function for calculating the speed or acceleration of the centrifuge depending on the user's choice
 def rotor(radius,operation,parametr):
 
     if operation == "RPM":
@@ -50,7 +51,7 @@ def rotor(radius,operation,parametr):
         value = 1.118*radius*parametr**2/10**5
 
     return value
-
+# Function body
 for i in range(1000):
     print("\n Good day! Welcome to the set of converters used in molecular biology"
           "\n To calculate how much to dilute the solution, type \"сoncentration\""
