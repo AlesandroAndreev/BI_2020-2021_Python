@@ -6,7 +6,7 @@ class DNA:
             self.seq = seq
         else:
             raise TypeError('This is not DNA!')
-        
+
         self.nucleotide_index = 0
 
         self.dna_complement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A',
@@ -25,7 +25,7 @@ class DNA:
 
     def __hash__(self):
         return hash(self.__key())
-    
+
     def __next__(self):
         if self.nucleotide_index < len(self.seq):
             nucleotide = self.seq[self.nucleotide_index]
@@ -38,7 +38,8 @@ class DNA:
         return DNA(''.join(complement))
 
     def transcribe(self):
-        dna_to_rna_seq = [self.dna_to_rna_complement[base] for base in self.seq[::-1]]
+        dna_to_rna_seq = \
+            [self.dna_to_rna_complement[base] for base in self.seq[::-1]]
         return RNA(''.join(dna_to_rna_seq))
 
     def gc_content(self):
@@ -60,7 +61,7 @@ class RNA:
             self.seq = seq
         else:
             raise TypeError('This is not RNA!')
-        
+
         self.nucleotide_index = 0
 
         self.rna_complement = {'A': 'U', 'C': 'G', 'G': 'C', 'U': 'A',
@@ -77,7 +78,7 @@ class RNA:
 
     def __hash__(self):
         return hash(self.__key())
-   
+
     def __next__(self):
         if self.nucleotide_index < len(self.seq):
             nucleotide = self.seq[self.nucleotide_index]
