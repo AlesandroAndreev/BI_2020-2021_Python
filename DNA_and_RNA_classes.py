@@ -27,8 +27,8 @@ class DNA:
         return hash(self.__key())
     
     def __next__(self):
-        if self.nucleotide_index < len(self.sequence):
-            nucleotide = self.sequence[self.nucleotide_index]
+        if self.nucleotide_index < len(self.seq):
+            nucleotide = self.seq[self.nucleotide_index]
             self.nucleotide_index += 1
             return nucleotide
 
@@ -79,8 +79,8 @@ class RNA:
         return hash(self.__key())
    
     def __next__(self):
-        if self.nucleotide_index < len(self.sequence):
-            nucleotide = self.sequence[self.nucleotide_index]
+        if self.nucleotide_index < len(self.seq):
+            nucleotide = self.seq[self.nucleotide_index]
             self.nucleotide_index += 1
             return nucleotide
 
