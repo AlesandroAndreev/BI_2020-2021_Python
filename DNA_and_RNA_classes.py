@@ -1,111 +1,100 @@
-class NucleicAcids:
+class DNA:
 
-    def __init__ (self, seq):
-        self.seq = seq
-        self.dna_complement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'}
-        self.rna_complement = {'A': 'U', 'C': 'G', 'G': 'C', 'U': 'A'}
-        self.dna_to_rna_complement = {'A': 'U', 'C': 'G', 'G': 'C', 'T': 'A'}
+    def __init__(self, seq):
+
+        if all(nuc in 'AaTtGgCc' for nuc in seq):
+            self.seq = seq
+        else:
+            raise TypeError('This is not DNA!')
+        
+        self.nucleotide_index = 0
+
+        self.dna_complement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A',
+                               'a': 't', 'c': 'g', 'g': 'c', 't': 'a'}
+        self.dna_to_rna_complement = {'A': 'U', 'C': 'G', 'G': 'C', 'T': 'A',
+                                      'a': 'u', 'c': 'g', 'g': 'c', 't': 'a'}
 
     def __eq__(self, other):
-         if isinstance(other, DNA) or isinstance(other, RNA):
+        if isinstance(other, DNA) or isinstance(other, RNA):
             if other.seq == self.seq:
                 return True
-         return False
+        return False
 
     def __key(self):
         return self.seq
 
     def __hash__(self):
         return hash(self.__key())
-
-    def gc_content(self):
-
-        count = 0
-
-        for i in self.seq:
-            if i in ["G", "C"]:
-                count += 1
-
-        return round((count/len(self.seq))*100, 2)
-
-class RNA(NucleicAcids):
-
-   def __init__(self, seq):
-       super().__init__(seq)
-
-   def reverse_complement(self):
-       revers_seq = self.seq[::-1]
-       complement =  [self.rna_complement[base] for base in revers_seq]
-       return RNA(''.join(complement))
-
-class DNA(NucleicAcids):
-
-    def __init__(self, seq):
-        super().__init__(seq)
+    
+    def __next__(self):
+        if self.nucleotide_index < len(self.sequence):
+            nucleotide = self.sequence[self.nucleotide_index]
+            self.nucleotide_index += 1
+            return nucleotide
 
     def reverse_complement(self):
         revers_seq = self.seq[::-1]
-        complement =  [self.dna_complement[base] for base in revers_seq]
-        return RNA(''.join(complement))
+        complement = [self.dna_complement[base] for base in revers_seq]
+        return DNA(''.join(complement))
 
     def transcribe(self):
         dna_to_rna_seq = [self.dna_to_rna_complement[base] for base in self.seq[::-1]]
         return RNA(''.join(dna_to_rna_seq))
 
-print("Cod for test")
+    def gc_content(self):
+        count = 0
+        if len(self.seq) != 0:
+            for i in self.seq:
+                if i in ["G", "C", "g", "c"]:
+                    count += 1
+            return round((count/len(self.seq))*100, 2)
+        else:
+            return 0
 
-print("write your DNA set: ")
-dna_set = [DNA(seq) for seq in input().split()]
 
-print("write your RNA set: ")
-rna_set = [RNA(seq) for seq in input().split()]
+class RNA:
 
-print("Lets start test!")
+    def __init__(self, seq):
 
-if len(dna_set) != 0:
+        if all(nuc in 'AaUuGgCc' for nuc in seq):
+            self.seq = seq
+        else:
+            raise TypeError('This is not RNA!')
+        
+        self.nucleotide_index = 0
 
-    for number, dna in enumerate(dna_set):
+        self.rna_complement = {'A': 'U', 'C': 'G', 'G': 'C', 'U': 'A',
+                               'a': 'u', 'c': 'g', 'g': 'c', 'u': 'a'}
 
-        print("\nInfo about your DNA number {0}\n".format(number + 1))
+    def __eq__(self, other):
+        if isinstance(other, DNA) or isinstance(other, RNA):
+            if other.seq == self.seq:
+                return True
+        return False
 
-        print("Your sequence {0}".format(dna.seq))
-        print("Your sequence type is {0}".format(type(dna)))
-        print("Hash your DNA will {0}\n".format(dna.__hash__()))
+    def __key(self):
+        return self.seq
 
-        print("Is it true that different objects created from the same "
-              "sequence are equal? It is {0}".format(dna == DNA(dna.seq)))
-        print("And if we compare it with a reverse compliment, "
-              "then there will already be {0}\n".format(dna == dna.reverse_complement()))
+    def __hash__(self):
+        return hash(self.__key())
+   
+    def __next__(self):
+        if self.nucleotide_index < len(self.sequence):
+            nucleotide = self.sequence[self.nucleotide_index]
+            self.nucleotide_index += 1
+            return nucleotide
 
-        print("By the way! And if we write the reverse compliment,"
-              " it will look like {0}".format(dna.reverse_complement().seq))
-        print("And its type is {0}".format(type(dna.reverse_complement())))
-        print("Hash your revers compliment will {0}\n".format(dna.reverse_complement().__hash__()))
+    def reverse_complement(self):
+        revers_seq = self.seq[::-1]
+        complement = [self.rna_complement[base] for base in revers_seq]
+        return RNA(''.join(complement))
 
-        print("If we use transcribe sequence looks like {0}".format(dna.transcribe().seq))
-        print("Type of your transcribe sequence is {0}".format(type(dna.transcribe())))
-        print("Hash of your transcribe sequence will {0}\n".format(dna.transcribe().__hash__()))
-else:
-    print("You haven't entered DNA sequences!:(")
-
-if len(rna_set) != 0:
-
-    for number, rna in enumerate(rna_set):
-
-        print("\nInfo about your RNA number {0}\n".format(number + 1))
-
-        print("Your sequence {0}".format(rna.seq))
-        print("Your sequence type is {0}".format(type(rna)))
-        print("Hash your RNA will {0}\n".format(DNA(rna).__hash__()))
-
-        print("Is it true that different objects created from the same "
-              "sequence are equal? It is {0}".format(rna == RNA(rna.seq)))
-        print("And if we compare it with a reverse compliment, "
-              "then there will already be {0}\n".format(rna == rna.reverse_complement()))
-
-        print("By the way! And if we write the reverse compliment,"
-              " it will look like {0}".format(rna.reverse_complement().seq))
-        print("And its type is {0}".format(type(rna.reverse_complement())))
-        print("Hash your revers compliment will {0}\n".format(rna.reverse_complement().__hash__()))
-else:
-    print("You haven't entered RNA sequences!:(")
+    def gc_content(self):
+        count = 0
+        if len(self.seq) != 0:
+            for i in self.seq:
+                if i in ["G", "C", "g", "c"]:
+                    count += 1
+            return round((count/len(self.seq))*100, 2)
+        else:
+            return 0
