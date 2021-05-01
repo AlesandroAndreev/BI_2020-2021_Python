@@ -61,8 +61,9 @@ class NucleicTest(unittest.TestCase):
                         "Неравенство не соблюдено!")
         self.assertTrue(self.dna_g == self.dna_g,
                         "Неравенство не соблюдено!")
-        self.assertTrue(self.dna_different_registr == self.dna_different_registr,
-                        "Неравенство не соблюдено!")
+        self.assertTrue(
+            self.dna_different_registr == self.dna_different_registr,
+            "Неравенство не соблюдено!")
         self.assertTrue(self.dna_normal == self.dna_normal,
                         "Неравенство не соблюдено!")
 
@@ -70,14 +71,16 @@ class NucleicTest(unittest.TestCase):
                         "Неравенство не соблюдено!")
         self.assertTrue(self.rna_g == self.rna_g,
                         "Неравенство не соблюдено!")
-        self.assertTrue(self.rna_different_registr == self.rna_different_registr,
-                        "Неравенство не соблюдено!")
+        self.assertTrue(
+            self.rna_different_registr == self.rna_different_registr,
+            "Неравенство не соблюдено!")
         self.assertTrue(self.rna_normal == self.rna_normal,
                         "Неравенство не соблюдено!")
 
-        self.assertEqual(self.dna_normal.reverse_complement().seq,
-                         'TGGCAATTTGGCAT',
-                         'Не правильный Revers-compliment!')
+        self.assertEqual(
+            self.dna_normal.reverse_complement().seq,
+            'TGGCAATTTGGCAT',
+            'Не правильный Revers-compliment!')
 
     def test_self_type(self):
 
@@ -85,7 +88,8 @@ class NucleicTest(unittest.TestCase):
                               'Не верный формат! Ожидалась ДНК!')
         self.assertIsInstance(self.dna_g, DNA_and_RNA_classes.DNA,
                               'Не верный формат! Ожидалась ДНК!')
-        self.assertIsInstance(self.dna_different_registr, DNA_and_RNA_classes.DNA,
+        self.assertIsInstance(self.dna_different_registr,
+                              DNA_and_RNA_classes.DNA,
                               'Не верный формат! Ожидалась ДНК!')
         self.assertIsInstance(self.dna_normal, DNA_and_RNA_classes.DNA,
                               'Не верный формат! Ожидалась ДНК!')
@@ -94,7 +98,8 @@ class NucleicTest(unittest.TestCase):
                               'Не верный формат! Ожидалась РНК!')
         self.assertIsInstance(self.rna_g, DNA_and_RNA_classes.RNA,
                               'Не верный формат! Ожидалась РНК!')
-        self.assertIsInstance(self.rna_different_registr, DNA_and_RNA_classes.RNA,
+        self.assertIsInstance(self.rna_different_registr,
+                              DNA_and_RNA_classes.RNA,
                               'Не верный формат! Ожидалась РНК!')
         self.assertIsInstance(self.rna_normal, DNA_and_RNA_classes.RNA,
                               'Не верный формат! Ожидалась РНК!')
