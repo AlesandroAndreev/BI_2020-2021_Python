@@ -4,6 +4,7 @@ import DNA_and_RNA_classes
 from DNA_and_RNA_classes import DNA
 from DNA_and_RNA_classes import RNA
 
+
 class NucleicTest(unittest.TestCase):
 
     def setUp(self):
@@ -119,19 +120,18 @@ class NucleicTest(unittest.TestCase):
         self.assertListEqual([x for x in self.dna_zero.seq], [],
                              "Нарушенна последовательность итерации!!!")
         self.assertListEqual([x for x in self.dna_g .seq],
-                             ['G', 'G', 'G', 'G', 'G', 'G','G', 'G', 'G', 'G', 'G', 'G','G', 'G', 'G'],
+                             ['G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G'],
                              "Нарушенна последовательность итерации!!!")
         self.assertListEqual([x for x in self.dna_different_registr.seq],
-                             ['A', 't','G', 'c', 'A', 'A', 'A', 'T', 'T', 'G', 'C', 'c'],
+                             ['A', 't', 'G', 'c', 'A', 'A', 'A', 'T', 'T', 'G', 'C', 'c'],
                              "Нарушенна последовательность итерации!!!")
         self.assertListEqual([x for x in self.dna_normal.seq],
                              ['A', 'T', 'G', 'C', 'C', 'A', 'A', 'A', 'T', 'T', 'G', 'C', 'C', 'A'],
                              "Нарушенна последовательность итерации!!!")
 
-        self.assertListEqual([x for x in self.rna_zero.seq], [],
-                             "Нарушенна последовательность итерации!!!")
+        self.assertListEqual([x for x in self.rna_zero.seq], [], "Нарушенна последовательность итерации!!!")
         self.assertListEqual([x for x in self.rna_g .seq],
-                             ['G', 'G', 'G', 'G', 'G', 'G','G', 'G', 'G', 'G', 'G', 'G','G', 'G', 'G'],
+                             ['G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G'],
                              "Нарушенна последовательность итерации!!!")
         self.assertListEqual([x for x in self.rna_different_registr.seq],
                              ['A', 'u', 'G', 'c', 'A', 'A', 'A', 'u', 'u', 'G', 'C', 'c'],
@@ -139,6 +139,7 @@ class NucleicTest(unittest.TestCase):
         self.assertListEqual([x for x in self.rna_normal.seq],
                              ['A', 'U', 'G', 'C', 'C', 'A', 'A', 'A', 'U', 'U', 'G', 'C', 'C', 'A'],
                              "Нарушенна последовательность итерации!!!")
+
 
 if __name__ == '__main__':
     unittest.main()
